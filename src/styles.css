@@ -1490,6 +1490,30 @@ img {
   }
 }
 
+@media (max-width: 620px) {
+  .story-stage {
+    background:
+      radial-gradient(circle at 54% 20%, rgba(255, 227, 205, 0.8), transparent 16rem),
+      var(--paper);
+  }
+
+  .stage-surface {
+    background:
+      radial-gradient(circle at 52% 24%, transparent 30%, rgba(255, 253, 249, 0.24) 60%),
+      linear-gradient(180deg, transparent 0 36%, rgba(255, 253, 249, 0.9) 52%, var(--paper) 65%);
+  }
+
+  .opening {
+    min-height: max(124svh, 1040px);
+  }
+
+  .opening-copy {
+    position: relative;
+    padding-top: 29px;
+    background: linear-gradient(180deg, transparent, var(--paper) 29px);
+  }
+}
+
 @media (max-width: 520px) {
   .eyebrow {
     font-size: 0.62rem;

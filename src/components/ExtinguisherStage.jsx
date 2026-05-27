@@ -44,11 +44,11 @@ function Extinguisher({ storyRef, reducedMotion, compact, tablet }) {
         )
       : 0;
     const motion = zoom;
-    const heroScale = compact ? 1.4 : tablet ? 2.12 : 2.55;
+    const heroScale = compact ? 1.08 : tablet ? 2.02 : 2.45;
     const closeUpScale = compact ? 9 : 14.6;
     const surfaceScale = compact ? 5.25 : 9.2;
-    const heroX = compact ? 0 : tablet ? 0.7 : 1.54;
-    const heroY = compact ? 0.55 : 0;
+    const heroX = compact ? 0.14 : tablet ? 0.58 : 1.18;
+    const heroY = compact ? 0.58 : 0;
 
     let scale = THREE.MathUtils.lerp(heroScale, closeUpScale, motion);
     scale = THREE.MathUtils.lerp(scale, surfaceScale, unfurl);
@@ -108,9 +108,9 @@ function Extinguisher({ storyRef, reducedMotion, compact, tablet }) {
   return (
     <group
       ref={group}
-      position={[compact ? 0 : tablet ? 0.7 : 1.54, compact ? 0.55 : 0, 0]}
+      position={[compact ? 0.14 : tablet ? 0.58 : 1.18, compact ? 0.58 : 0, 0]}
       rotation={[0, Math.PI - 0.42, 0]}
-      scale={compact ? 1.4 : tablet ? 2.12 : 2.55}
+      scale={compact ? 1.08 : tablet ? 2.02 : 2.45}
     >
       <Center>
         <primitive object={model} />
