@@ -13,6 +13,7 @@ function LoadingModel() {
 
 function Extinguisher({ storyRef, reducedMotion, compact, tablet }) {
   const group = useRef();
+  const dom = useRef({ label: null, finale: null });
   const { scene } = useGLTF("/assets/fire-extinguisher.glb");
   const model = useMemo(() => scene.clone(true), [scene]);
 
@@ -21,13 +22,20 @@ function Extinguisher({ storyRef, reducedMotion, compact, tablet }) {
       return;
     }
 
+    if (!dom.current.label) {
+      dom.current.label = document.getElementById("label-story");
+    }
+    if (!dom.current.finale) {
+      dom.current.finale = document.querySelector(".finale");
+    }
+
     const viewportHeight = Math.max(window.innerHeight, 1);
     const storyTop = storyRef.current.getBoundingClientRect().top;
     const pagesTravelled = -storyTop / viewportHeight;
     const zoom = THREE.MathUtils.smoothstep(pagesTravelled, 0.16, 0.9);
     const unfurl = THREE.MathUtils.smoothstep(pagesTravelled, 0.45, 1.12);
-    const label = document.getElementById("label-story");
-    const finale = document.querySelector(".finale");
+    const label = dom.current.label;
+    const finale = dom.current.finale;
     const rollProgress = label
       ? THREE.MathUtils.clamp(
           (viewportHeight * 0.35 - label.getBoundingClientRect().top)
@@ -44,11 +52,11 @@ function Extinguisher({ storyRef, reducedMotion, compact, tablet }) {
         )
       : 0;
     const motion = zoom;
-    const heroScale = compact ? 1.4 : tablet ? 2.12 : 2.55;
+    const heroScale = compact ? 1.62 : tablet ? 2.02 : 2.45;
     const closeUpScale = compact ? 9 : 14.6;
     const surfaceScale = compact ? 5.25 : 9.2;
-    const heroX = compact ? 0 : tablet ? 0.7 : 1.54;
-    const heroY = compact ? 0.55 : 0;
+    const heroX = compact ? 0.44 : tablet ? 0.58 : 0.98;
+    const heroY = compact ? 0.18 : 0;
 
     let scale = THREE.MathUtils.lerp(heroScale, closeUpScale, motion);
     scale = THREE.MathUtils.lerp(scale, surfaceScale, unfurl);
@@ -58,23 +66,22 @@ function Extinguisher({ storyRef, reducedMotion, compact, tablet }) {
     let y = THREE.MathUtils.lerp(heroY, 0, motion);
     y = THREE.MathUtils.lerp(y, heroY, returnProgress);
 
-    const labelFacing = Math.PI - 0.42;
-    const turnIn = reducedMotion
-      ? THREE.MathUtils.lerp(labelFacing, labelFacing + 0.42, motion)
-      : labelFacing + motion * (Math.PI * 2 + 1.05);
-    const recordRoll = reducedMotion ? 0 : rollProgress * Math.PI * 10;
-    const finalFacing = reducedMotion ? labelFacing : labelFacing + Math.PI * 12;
-    const targetRotationY = THREE.MathUtils.lerp(turnIn + recordRoll, finalFacing, returnProgress);
+    // One continuous, scroll-tied turn. The model squares up to face the
+    // viewer during the zoom, then keeps turning slowly in the same direction
+    // through the record — capped well under a half rotation so it never loops.
+    const heroFacing = Math.PI - 0.42;
+    const faceFront = motion * 0.42;
+    const recordTurn = reducedMotion ? 0 : rollProgress * (Math.PI * 0.6);
+    const targetRotationY = THREE.MathUtils.lerp(
+      heroFacing + faceFront + recordTurn,
+      heroFacing,
+      returnProgress,
+    );
     const targetRotationX = reducedMotion
       ? 0
-      : -Math.sin(motion * Math.PI) * 0.36 * (1 - unfurl)
-        + Math.sin(rollProgress * Math.PI * 2) * 0.018 * (1 - returnProgress);
-    const landscapeRotation = -Math.PI * 0.5 * unfurl * (1 - returnProgress);
-    const closeUpTilt = reducedMotion
-      ? 0
-      : Math.sin(motion * Math.PI) * 0.14 * (1 - unfurl) * (1 - returnProgress);
-    const targetRotationZ = landscapeRotation + closeUpTilt;
-    const damping = reducedMotion ? 12 : 5.1;
+      : -Math.sin(motion * Math.PI) * 0.18 * (1 - unfurl);
+    const targetRotationZ = -Math.PI * 0.5 * unfurl * (1 - returnProgress);
+    const damping = reducedMotion ? 12 : 7.5;
 
     group.current.scale.setScalar(
       THREE.MathUtils.damp(group.current.scale.x, scale, damping, delta),
@@ -108,9 +115,9 @@ function Extinguisher({ storyRef, reducedMotion, compact, tablet }) {
   return (
     <group
       ref={group}
-      position={[compact ? 0 : tablet ? 0.7 : 1.54, compact ? 0.55 : 0, 0]}
+      position={[compact ? 0.44 : tablet ? 0.58 : 0.98, compact ? 0.18 : 0, 0]}
       rotation={[0, Math.PI - 0.42, 0]}
-      scale={compact ? 1.4 : tablet ? 2.12 : 2.55}
+      scale={compact ? 1.62 : tablet ? 2.02 : 2.45}
     >
       <Center>
         <primitive object={model} />
