@@ -29,6 +29,12 @@ function Extinguisher({ storyRef, reducedMotion, compact, tablet }) {
       dom.current.finale = document.querySelector(".finale");
     }
 
+    // Roll the body around its own long axis *before* it tilts to landscape,
+    // so the label unrolls like a scroll instead of sweeping like a rotor.
+    if (group.current.rotation.order !== "ZXY") {
+      group.current.rotation.order = "ZXY";
+    }
+
     const viewportHeight = Math.max(window.innerHeight, 1);
     const storyTop = storyRef.current.getBoundingClientRect().top;
     const pagesTravelled = -storyTop / viewportHeight;
@@ -66,12 +72,12 @@ function Extinguisher({ storyRef, reducedMotion, compact, tablet }) {
     let y = THREE.MathUtils.lerp(heroY, 0, motion);
     y = THREE.MathUtils.lerp(y, heroY, returnProgress);
 
-    // One continuous, scroll-tied turn. The model squares up to face the
-    // viewer during the zoom, then keeps turning slowly in the same direction
-    // through the record — capped well under a half rotation so it never loops.
+    // The model squares up to face the viewer during the zoom, then — because
+    // of the ZXY order above — this turn rolls it around its long axis as it
+    // lies down, so the label unrolls with the scroll instead of sweeping.
     const heroFacing = Math.PI - 0.42;
     const faceFront = motion * 0.42;
-    const recordTurn = reducedMotion ? 0 : rollProgress * (Math.PI * 0.6);
+    const recordTurn = reducedMotion ? 0 : rollProgress * Math.PI;
     const targetRotationY = THREE.MathUtils.lerp(
       heroFacing + faceFront + recordTurn,
       heroFacing,
