@@ -192,11 +192,7 @@ function Header() {
     <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
       <div className="header-inner">
         <a className="wordmark" href="#home" aria-label="Rahul Fire Safety home" onClick={close}>
-          <span className="wordmark-mark" aria-hidden="true">R</span>
-          <span className="wordmark-text">
-            <strong>RAHUL</strong>
-            <small>FIRE SAFETY</small>
-          </span>
+          <img className="wordmark-logo" src="/assets/rahul-logo.png" alt="Rahul Fire Safety" width="1588" height="352" />
         </a>
 
         <nav id="site-navigation" className={open ? "site-nav is-open" : "site-nav"}>
@@ -695,10 +691,7 @@ function Footer() {
     <footer className="site-footer">
       <div className="footer-inner">
         <div className="footer-brand">
-          <div className="wordmark wordmark--footer">
-            <span className="wordmark-mark" aria-hidden="true">R</span>
-            <span className="wordmark-text"><strong>RAHUL</strong><small>FIRE SAFETY</small></span>
-          </div>
+          <img className="wordmark-logo wordmark-logo--footer" src="/assets/rahul-logo.png" alt="Rahul Fire Safety" width="1588" height="352" />
           <p>Fire protection consultants &amp; engineers. Design, supply, installation, audits and maintenance across North India.</p>
           <p className="footer-iso">ISO 9001:2015 · MSME · GeM registered</p>
         </div>

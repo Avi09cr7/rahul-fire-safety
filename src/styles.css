@@ -330,6 +330,16 @@ h3 {
   color: var(--flame-2);
 }
 
+.wordmark-logo {
+  height: 38px;
+  width: auto;
+  display: block;
+}
+
+.wordmark-logo--footer {
+  height: 46px;
+}
+
 .site-nav {
   display: flex;
   align-items: center;
@@ -1632,6 +1642,10 @@ h3 {
 
   .client-bar-inner {
     gap: 1rem;
+  }
+
+  .wordmark-logo {
+    height: 33px;
   }
 
   .fab-toggle-label {
