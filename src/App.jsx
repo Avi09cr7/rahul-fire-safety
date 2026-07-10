@@ -251,10 +251,10 @@ function ClientBar() {
         <div className="client-bar-marquee">
           <div className="client-bar-track">
             {clientLogos.map((c) => (
-              <img key={c.alt} src={c.src} alt={c.alt} loading="lazy" decoding="async" />
+              <img key={c.alt} src={c.src} alt={c.alt} decoding="async" />
             ))}
             {clientLogos.map((c) => (
-              <img key={`${c.alt}-dup`} src={c.src} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+              <img key={`${c.alt}-dup`} src={c.src} alt="" aria-hidden="true" decoding="async" />
             ))}
           </div>
         </div>
