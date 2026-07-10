@@ -484,41 +484,37 @@ h3 {
 /* ---------------- Client bar ---------------- */
 
 .client-bar {
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  background: var(--ink-2);
+  background: linear-gradient(180deg, #f1f2f5 0%, #e6e8ec 100%);
+  border-top: 1px solid rgba(0, 0, 0, 0.14);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.14);
 }
 
 .client-bar-inner {
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 1.9rem var(--pad);
+  padding: 2.1rem var(--pad);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.4rem;
+  gap: 1.5rem;
 }
 
 .client-bar-label {
   font-family: var(--display);
   text-transform: uppercase;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   font-weight: 600;
   font-size: 0.9rem;
-  color: var(--muted-2);
+  color: #5b616b;
   text-align: center;
 }
 
 .client-bar-marquee {
   width: 100%;
   overflow: hidden;
-  padding: 15px 0;
-  border-radius: 18px;
-  background: linear-gradient(180deg, rgba(228, 231, 237, 0.88), rgba(206, 212, 220, 0.82));
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 20px 45px -28px rgba(0, 0, 0, 0.7);
-  -webkit-backdrop-filter: blur(8px) saturate(1.05);
-  backdrop-filter: blur(8px) saturate(1.05);
+  padding: 6px 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
 }
 
 .client-bar-track {
@@ -533,10 +529,10 @@ h3 {
 }
 
 .client-bar-track img {
-  height: 54px;
+  height: 56px;
   width: auto;
   flex-shrink: 0;
-  margin-right: clamp(2.2rem, 5.5vw, 4.5rem);
+  margin-right: clamp(2.4rem, 6vw, 5rem);
   object-fit: contain;
 }
 

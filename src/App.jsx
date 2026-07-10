@@ -92,12 +92,12 @@ const trustMarks = [
 
 const clientLogos = [
   { src: "/assets/trust/powergrid.png", alt: "POWERGRID" },
-  { src: "/assets/trust/indianoil.png", alt: "IndianOil" },
+  { src: "/assets/trust/indianoil.svg", alt: "IndianOil" },
   { src: "/assets/trust/hindustan-petroleum.svg", alt: "Hindustan Petroleum" },
   { src: "/assets/trust/haldirams.png", alt: "Haldiram's" },
   { src: "/assets/trust/pvr.png", alt: "PVR Cinemas" },
-  { src: "/assets/trust/icici-bank.png", alt: "ICICI Bank" },
-  { src: "/assets/trust/bhel.png", alt: "BHEL" },
+  { src: "/assets/trust/icici-bank.svg", alt: "ICICI Bank" },
+  { src: "/assets/trust/bhel.svg", alt: "BHEL" },
   { src: "/assets/trust/iffco.png", alt: "IFFCO" },
   { src: "/assets/trust/uttam-sugar.png", alt: "Uttam Sugar" },
   { src: "/assets/trust/indian-navy.png", alt: "Indian Navy" },
