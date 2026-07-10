@@ -29,6 +29,40 @@
   --pad: clamp(1.25rem, 5vw, 4rem);
   --radius: 14px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  color-scheme: dark;
+}
+
+/* ---- Light theme ---- */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --ink: #f3f4f7;
+  --ink-2: #ffffff;
+  --ink-3: #eef0f4;
+  --ink-4: #e5e8ee;
+  --line: rgba(15, 20, 30, 0.1);
+  --line-strong: rgba(15, 20, 30, 0.17);
+  --text: #16181c;
+  --muted: #545c66;
+  --muted-2: #7b838e;
+  --flame-soft: rgba(255, 77, 28, 0.12);
+}
+
+/* Bands that stay dark in BOTH themes (dark photography) + the floating header */
+.hero,
+.stats,
+.systems,
+.finale,
+.site-header {
+  --ink: #0d0e10;
+  --ink-2: #121417;
+  --ink-3: #17191d;
+  --ink-4: #1e2126;
+  --line: rgba(255, 255, 255, 0.09);
+  --line-strong: rgba(255, 255, 255, 0.16);
+  --text: #f5f2ef;
+  --muted: #a49e97;
+  --muted-2: #7c766f;
+  --flame-soft: rgba(255, 77, 28, 0.14);
 }
 
 *,
@@ -205,6 +239,43 @@ h3 {
   background: rgba(11, 12, 14, 0.85);
   backdrop-filter: blur(14px);
   border-bottom-color: var(--line);
+}
+
+/* In light mode, once scrolled off the dark hero the header flips to light */
+:root[data-theme="light"] .site-header.is-scrolled {
+  --text: #16181c;
+  --muted: #545c66;
+  --muted-2: #7b838e;
+  --line: rgba(15, 20, 30, 0.1);
+  --line-strong: rgba(15, 20, 30, 0.17);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.theme-toggle {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  border: 1px solid var(--line-strong);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.2s var(--ease), transform 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+:root[data-theme="light"] .site-header.is-scrolled .theme-toggle {
+  background: rgba(15, 20, 30, 0.04);
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
 }
 
 .header-inner {
@@ -489,6 +560,10 @@ h3 {
   border-bottom: 1px solid rgba(0, 0, 0, 0.14);
 }
 
+:root[data-theme="light"] .client-bar {
+  background: #ffffff;
+}
+
 .client-bar-inner {
   max-width: var(--maxw);
   margin: 0 auto;
@@ -765,6 +840,10 @@ h3 {
   font-weight: 700;
   font-size: 1.7rem;
   color: rgba(255, 255, 255, 0.12);
+}
+
+:root[data-theme="light"] .service-num {
+  color: rgba(15, 20, 30, 0.12);
 }
 
 .service-card h3 {
