@@ -492,10 +492,10 @@ h3 {
 .client-bar-inner {
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 1.6rem var(--pad);
+  padding: 1.4rem var(--pad);
   display: flex;
   align-items: center;
-  gap: 2.5rem;
+  gap: 2rem;
 }
 
 .client-bar-label {
@@ -509,33 +509,44 @@ h3 {
   flex-shrink: 0;
 }
 
+.client-bar-marquee {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  padding: 12px 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+
 .client-bar-track {
   display: flex;
   align-items: center;
-  gap: clamp(1.5rem, 4vw, 3rem);
-  overflow-x: auto;
-  scrollbar-width: none;
+  width: max-content;
+  animation: marquee 34s linear infinite;
 }
 
-.client-bar-track::-webkit-scrollbar {
-  display: none;
+.client-bar-marquee:hover .client-bar-track {
+  animation-play-state: paused;
 }
 
 .client-bar-track img {
-  height: 46px;
+  height: 58px;
   width: auto;
   flex-shrink: 0;
-  background: #fff;
-  padding: 7px 12px;
-  border-radius: 8px;
+  margin-right: clamp(1.6rem, 4vw, 3rem);
+  padding: 11px 18px;
   object-fit: contain;
-  opacity: 0.92;
-  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
+  border-radius: 14px;
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.94), rgba(236, 240, 247, 0.84));
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 14px 30px -20px rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px) saturate(1.1);
+  -webkit-backdrop-filter: blur(10px) saturate(1.1);
 }
 
-.client-bar-track img:hover {
-  opacity: 1;
-  transform: translateY(-2px);
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 /* ---------------- About ---------------- */
@@ -1552,6 +1563,11 @@ h3 {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
+  }
+
+  .client-bar-marquee {
+    width: 100%;
+    flex: none;
   }
 
   .fab-toggle-label {

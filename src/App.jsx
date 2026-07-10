@@ -248,10 +248,15 @@ function ClientBar() {
     <section className="client-bar" id="clients">
       <div className="client-bar-inner">
         <p className="client-bar-label">Trusted to protect</p>
-        <div className="client-bar-track">
-          {clientLogos.map((c) => (
-            <img key={c.alt} src={c.src} alt={c.alt} loading="lazy" decoding="async" />
-          ))}
+        <div className="client-bar-marquee">
+          <div className="client-bar-track">
+            {clientLogos.map((c) => (
+              <img key={c.alt} src={c.src} alt={c.alt} loading="lazy" decoding="async" />
+            ))}
+            {clientLogos.map((c) => (
+              <img key={`${c.alt}-dup`} src={c.src} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+            ))}
+          </div>
         </div>
       </div>
     </section>
