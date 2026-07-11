@@ -90,7 +90,7 @@ const projectGroups = [
   {
     title: "Commercial & residential",
     items: [
-      { src: "/assets/projects/mall-ghaziabad-up.jpg", label: "Mall", place: "Ghaziabad, UP" },
+      { src: "/assets/projects/mall-ghaziabad-up.jpg", label: "Shipra Mall (North India Mall)", place: "Indirapuram, Ghaziabad" },
       { src: "/assets/projects/residential-apartment-greater-noida-up.jpg", label: "Residential Apartment", place: "Greater Noida, UP" },
     ],
   },
@@ -650,6 +650,10 @@ function Work() {
           <WorkRow key={group.title} group={group} reverse={i % 2 === 1} />
         ))}
       </div>
+      <p className="work-credit">
+        Shipra Mall photograph: Андрей Коваль,{" "}
+        <a href="https://creativecommons.org/licenses/by/3.0/deed.en" target="_blank" rel="noopener noreferrer">CC BY 3.0</a>, via Wikimedia Commons.
+      </p>
     </section>
   );
 }
