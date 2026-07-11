@@ -107,20 +107,27 @@ const marqueeClients = [
   "BCL Ethanol, Punjab",
 ];
 
-/* Certification & registration marks. */
-const certMarks = [
-  { src: "/assets/certs/iso.png", alt: "ISO 9001:2015 certification mark", label: "ISO 9001:2015" },
-  { src: "/assets/certs/msme.png", alt: "MSME registration mark", label: "MSME" },
-  { src: "/assets/certs/gem-government-e-marketplace.png", alt: "Government e-Marketplace mark", label: "GeM" },
-  { src: "/assets/certs/isi-mark.png", alt: "ISI mark", label: "ISI" },
-  { src: "/assets/certs/ce-mark.png", alt: "CE mark", label: "CE" },
+/* Certifications, registrations and channel partners — one uniform rail. */
+const credentialMarks = [
+  { src: "/assets/certs/iso.png", alt: "ISO 9001:2015 certification mark", label: "ISO 9001:2015", type: "Certified" },
+  { src: "/assets/certs/msme.png", alt: "MSME registration mark", label: "MSME", type: "Registered" },
+  { src: "/assets/certs/gem-government-e-marketplace.png", alt: "Government e-Marketplace mark", label: "GeM", type: "Registered" },
+  { src: "/assets/certs/isi-mark.png", alt: "ISI mark", label: "ISI", type: "Marked" },
+  { src: "/assets/certs/ce-mark.png", alt: "CE mark", label: "CE", type: "Marked" },
+  { src: "/assets/certs/channel-partner-cease-fire.png", alt: "Ceasefire logo", label: "Ceasefire", type: "Channel partner" },
+  { src: "/assets/certs/channel-partner-mitras.png", alt: "Mitras logo", label: "Mitras", type: "Channel partner" },
+  { src: "/assets/certs/channel-partner-newtech.png", alt: "Newtech logo", label: "Newtech", type: "Channel partner" },
+  { src: "/assets/certs/channel-partner-rapidex.png", alt: "Rapidex Worldwide Express logo", label: "Rapidex", type: "Channel partner" },
 ];
 
-const channelPartners = [
-  { src: "/assets/certs/channel-partner-cease-fire.png", alt: "Ceasefire channel partner" },
-  { src: "/assets/certs/channel-partner-mitras.png", alt: "Mitras channel partner" },
-  { src: "/assets/certs/channel-partner-newtech.png", alt: "Newtech channel partner" },
-  { src: "/assets/certs/channel-partner-rapidex.png", alt: "Rapidex Worldwide Express channel partner" },
+/* Equipment we supply — stated plainly instead of a brochure collage. */
+const equipment = [
+  ["Fire extinguishers", "CO₂, DCP, ABC, foam and clean-agent types — sized and sited to the hazard.", "extinguisher"],
+  ["Hydrant & wet riser hardware", "Landing valves, hoses, couplings, branch pipes and hose boxes.", "gauge"],
+  ["Hose reels & cabinets", "Swing-type reels, nozzles and enclosures for first-response cover.", "refresh"],
+  ["Detection & alarm", "Panels, smoke and heat detectors, hooters and manual call points.", "alarm"],
+  ["Sprinklers & spray nozzles", "Quartzoid bulbs, MV / HV spray nozzles and installation fittings.", "droplet"],
+  ["Signage & safety accessories", "Photoluminescent signage, fire buckets, blankets and PPE.", "shield"],
 ];
 
 /* Full client roster (transparent logos shown on white tiles). */
@@ -362,10 +369,14 @@ function ClientBar() {
         <div className="client-bar-marquee">
           <div className="client-bar-track">
             {marqueeLogos.map((c) => (
-              <img key={c.alt} src={c.src} alt={c.alt} decoding="async" />
+              <span className="client-cell" key={c.alt}>
+                <img src={c.src} alt={c.alt} decoding="async" />
+              </span>
             ))}
             {marqueeLogos.map((c) => (
-              <img key={`${c.alt}-dup`} src={c.src} alt="" aria-hidden="true" decoding="async" />
+              <span className="client-cell" key={`${c.alt}-dup`} aria-hidden="true">
+                <img src={c.src} alt="" decoding="async" />
+              </span>
             ))}
           </div>
         </div>
@@ -517,25 +528,33 @@ function Systems() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Products                                                          */
+/*  Equipment we supply                                               */
 /* ------------------------------------------------------------------ */
 
-function Products() {
+function Equipment() {
   return (
-    <section className="section products">
+    <section className="section equipment" id="equipment">
       <div className="section-head">
         <div>
           <Kicker>Our products</Kicker>
-          <h2 data-reveal>The fire protection equipment we supply.</h2>
+          <h2 data-reveal>The equipment we supply — correctly specified.</h2>
         </div>
         <p className="section-head-note" data-reveal>
-          Correctly specified extinguishers, hydrant and suppression hardware — sourced and
-          supplied alongside every installation and AMC.
+          Sourced and supplied alongside every installation and AMC, so what arrives on
+          site matches what the design demands.
         </p>
       </div>
-      <figure className="products-banner" data-reveal>
-        <img src="/assets/products/fire-protection-equipments-range.png" alt="Range of fire protection equipment supplied by Rahul Fire Safety" loading="lazy" decoding="async" />
-      </figure>
+      <div className="equip-grid">
+        {equipment.map(([title, text, icon]) => (
+          <article className="equip-card" key={title} data-reveal>
+            <span className="service-icon" aria-hidden="true"><Icon name={icon} /></span>
+            <div>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </div>
+          </article>
+        ))}
+      </div>
     </section>
   );
 }
@@ -648,26 +667,16 @@ function Credentials() {
         </p>
       </div>
 
-      <div className="cred-marks-row">
-        <div className="cred-block" data-reveal>
-          <p className="cred-block-title">Certifications & registrations</p>
-          <div className="credential-marks">
-            {certMarks.map((m) => (
-              <figure key={m.label}>
-                <img src={m.src} alt={m.alt} loading="lazy" decoding="async" />
-                <figcaption>{m.label}</figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
-        <div className="cred-block" data-reveal>
-          <p className="cred-block-title">Channel partners</p>
-          <div className="credential-partners">
-            {channelPartners.map((m) => (
-              <figure key={m.alt}><img src={m.src} alt={m.alt} loading="lazy" decoding="async" /></figure>
-            ))}
-          </div>
-        </div>
+      <div className="marks-rail" data-reveal>
+        {credentialMarks.map((m) => (
+          <figure className="mark" key={m.label}>
+            <span className="mark-logo"><img src={m.src} alt={m.alt} loading="lazy" decoding="async" /></span>
+            <figcaption>
+              <strong>{m.label}</strong>
+              <span>{m.type}</span>
+            </figcaption>
+          </figure>
+        ))}
       </div>
 
       <div className="marquee-clients" data-reveal>
@@ -1003,7 +1012,7 @@ export default function App() {
         <Stats />
         <Services />
         <Systems />
-        <Products />
+        <Equipment />
         <WhyUs />
         <Work />
         <Credentials />
