@@ -348,16 +348,7 @@ function Hero() {
               <dd>Cities served</dd>
             </div>
             <div className="hero-stat hero-stat--code">
-              <dt>
-                <span className="std-badges" aria-label="NBC, TAC and NFPA design standards">
-                  {["NBC", "TAC", "NFPA"].map((s) => (
-                    <span className="std-badge" key={s}>
-                      <Icon name="shield" />
-                      {s}
-                    </span>
-                  ))}
-                </span>
-              </dt>
+              <dt>NBC · TAC · NFPA</dt>
               <dd>Engineered to standard</dd>
             </div>
           </dl>
