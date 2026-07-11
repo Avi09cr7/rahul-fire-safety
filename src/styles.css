@@ -541,10 +541,40 @@ h3 {
 }
 
 .hero-stat--code dt {
-  font-size: clamp(1.05rem, 2.4vw, 1.4rem);
-  padding-top: 0.35rem;
+  padding-top: 0.1rem;
+}
+
+/* Typographic standards badges — deliberately NOT the bodies' trademarked
+   logos; shield chips that read as credentials and fill the tile. */
+.std-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.std-badge {
+  flex: 1 1 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.65rem 1rem;
+  border-radius: 11px;
+  border: 1px solid rgba(255, 122, 47, 0.45);
+  background: var(--flame-soft);
   color: var(--flame-2);
-  letter-spacing: 0.02em;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(1.2rem, 2.4vw, 1.7rem);
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.std-badge svg {
+  width: 1.05em;
+  height: 1.05em;
+  stroke-width: 2;
+  flex-shrink: 0;
 }
 
 .hero-stat dd {
