@@ -15,6 +15,13 @@
       content="Fire protection design, supply, installation, audits and maintenance for safer facilities."
     />
     <title>Rahul Fire Safety | Fire Protection Consultants & Engineers</title>
+    <script>
+      // Match the visitor's device theme before first paint (toggle can override).
+      document.documentElement.setAttribute(
+        "data-theme",
+        window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"
+      );
+    </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

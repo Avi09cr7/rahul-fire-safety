@@ -226,10 +226,15 @@ function MoonIcon() {
 }
 
 function ThemeToggle() {
-  // Always start in dark; the choice is intentionally NOT persisted, so a
-  // refresh reverts to dark (the reliable default) while the light theme is
-  // still a work in progress.
-  const [theme, setTheme] = useState("dark");
+  // Default follows the visitor's device setting (set pre-paint in index.html);
+  // the toggle overrides for the session and is intentionally not persisted.
+  const [theme, setTheme] = useState(() =>
+    typeof window !== "undefined" &&
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: light)").matches
+      ? "light"
+      : "dark",
+  );
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
