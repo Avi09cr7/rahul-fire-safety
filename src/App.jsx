@@ -9,99 +9,165 @@ const PHONE_SECONDARY = "+919719159819";
 const PHONE_PRIMARY_DISPLAY = "+91 94125 25987";
 const PHONE_SECONDARY_DISPLAY = "+91 97191 59819";
 const EMAIL = "rahulfire2001@yahoo.com";
+const EMAIL_SECONDARY = "contact@rahulfiresafety.com";
+const WEBSITE_DISPLAY = "www.rahulfiresafety.com";
+const INSTAGRAM = "rahulfiresafety";
 const WHATSAPP = "919412525987";
 
+// Paste the free access key from https://web3forms.com (enter rahulfire2001@yahoo.com
+// there to receive it) between the quotes. Until then, the form falls back to
+// opening the visitor's email app with a pre-filled draft.
+const WEB3FORMS_KEY = "YOUR_WEB3FORMS_ACCESS_KEY";
+
 const stats = [
-  ["25+", "Years protecting life & property", "Since 2001"],
+  ["23+", "Years protecting life & property", "Since 2003"],
+  ["5000+", "Projects delivered", "Across two decades"],
+  ["19+", "Cities served", "North & central India"],
   ["ISO", "9001:2015 certified quality", "Accountable delivery"],
-  ["10+", "Landmark PSUs & brands served", "Public & private sector"],
-  ["08", "Engineered suppression systems", "Matched to the hazard"],
 ];
 
+// "Area's we deal in" — straight from the company profile.
 const services = [
-  ["01", "Survey & Audit", "Site risk reviews and practical compliance guidance that hold up to scrutiny.", "shield"],
-  ["02", "Design & Engineering", "Layouts engineered to NBC, TAC, NFPA and FM Global — not just the checklist.", "compass"],
-  ["03", "Installation", "Detection, hydrant, sprinkler and suppression execution by our own teams.", "wrench"],
-  ["04", "Equipment Supply", "Extinguishers, hose reels and essential fire protection, correctly specified.", "extinguisher"],
-  ["05", "Training", "Safety demonstrations and preparedness drills for your operating teams.", "people"],
-  ["06", "AMC & Maintenance", "Inspection and upkeep that keeps every system response-ready, year after year.", "refresh"],
+  ["01", "Designing", "Layouts engineered to NBC, TAC and NFPA standards using AutoCAD, Hydraulic Cal and Sprinkcad.", "compass"],
+  ["02", "System Installation", "Detection, hydrant, sprinkler and suppression systems executed by our own site teams.", "wrench"],
+  ["03", "Equipment Supply", "Extinguishers, hose reels and fire protection equipment — correctly specified and supplied.", "extinguisher"],
+  ["04", "Annual Maintenance", "AMC inspection and upkeep that keeps every system response-ready, year after year.", "refresh"],
+  ["05", "Audits", "Site risk reviews and compliance audits that hold up to scrutiny.", "shield"],
+  ["06", "Consultancy", "Guidance from qualified engineers across the full fire-protection project lifecycle.", "people"],
 ];
 
+// "Systems we provide" — the seven from the brochure.
 const systems = [
-  ["Fire detection & alarm systems", "alarm"],
   ["Automatic hydrant & wet riser systems", "gauge"],
+  ["Clean agent fire suppression systems", "shield"],
   ["CO₂ flooding systems", "cylinder"],
-  ["Clean agent suppression systems", "shield"],
-  ["High velocity water spray systems", "droplet"],
-  ["Medium velocity water spray systems", "spray"],
-  ["Kitchen hood extinguishing systems", "flame"],
   ["Nitrogen injection systems", "gas"],
+  ["High velocity water spray systems", "droplet"],
+  ["Kitchen hood extinguishing systems", "flame"],
+  ["Medium velocity water spray systems", "spray"],
 ];
 
 const whyUs = [
   [
     "One partner, start to finish",
-    "Survey, design, installation, equipment and AMC under a single accountable roof — no coordination gaps, no finger-pointing.",
+    "Design, installation, equipment supply, audits and AMC under a single accountable roof — no coordination gaps, no finger-pointing.",
   ],
   [
     "Engineered to code, every time",
-    "Every layout is worked to NBC, TAC, NFPA and FM Global standards, so what we install passes audit and performs when it matters.",
+    "A dedicated design & engineering division works every layout to NBC, TAC and NFPA standards, so what we install passes audit and performs when it matters.",
   ],
   [
-    "25 years, still answering the phone",
-    "A quarter-century of continuous practice since 2001. The systems we commissioned years ago are still maintained by the same hands.",
+    "Two decades, still answering the phone",
+    "Over 20 years of continuous practice since 2003. The systems we commissioned years ago are still maintained by the same hands.",
   ],
   [
     "Proven where failure isn't an option",
-    "Refineries, power utilities, defence, banking and hospitality trust us with their people and assets. The standard doesn't drop.",
+    "Distilleries, ethanol plants, paper mills, malls, hospitality and institutions across 19+ cities trust us with their people and assets.",
   ],
 ];
 
-const projects = [
+/* Projects grouped by type — each group becomes an auto-scrolling row. */
+const projectGroups = [
   {
-    src: "/assets/plant-installation.jpg",
-    alt: "Fire hydrant piping installed in an industrial plant",
-    caption: "Industrial protection system",
-    place: "Process plant · hydrant & sprinkler network",
+    title: "Distilleries",
+    items: [
+      { src: "/assets/projects/distillery-raipur-chhattisgarh.jpg", label: "Distillery", place: "Raipur, Chhattisgarh" },
+      { src: "/assets/projects/distillery-sangrur-punjab.jpg", label: "Distillery", place: "Sangrur, Punjab" },
+      { src: "/assets/projects/distillery-bareilly-up.jpg", label: "Distillery", place: "Bareilly, UP" },
+      { src: "/assets/projects/distillery-jabalpur-mp.jpg", label: "Distillery", place: "Jabalpur, MP" },
+      { src: "/assets/projects/distillery-mau-up.jpg", label: "Distillery", place: "Mau, UP" },
+    ],
   },
   {
-    src: "/assets/industrial-site.jpg",
-    alt: "Large industrial facility protected by fire safety systems",
-    caption: "Large-scale process facility",
-    place: "Heavy industry · full fire protection",
+    title: "Ethanol & process plants",
+    items: [
+      { src: "/assets/projects/ethanol-plant-bhatinda-punjab.jpg", label: "Ethanol Plant", place: "Bhatinda, Punjab" },
+      { src: "/assets/projects/ethanol-plant-malda-west-bengal.jpg", label: "Ethanol Plant", place: "Malda, West Bengal" },
+      { src: "/assets/projects/paper-mill-saharanpur-up.jpg", label: "Paper Mill", place: "Saharanpur, UP" },
+      { src: "/assets/projects/haldirams-plant-noida-up.jpg", label: "Haldiram's Plant", place: "Noida, UP" },
+    ],
   },
   {
-    src: "/assets/hospitality-installation.jpg",
-    alt: "Fire hose reel and extinguisher installation in a commercial premises",
-    caption: "Commercial & hospitality premises",
-    place: "Hospitality · hose reel & extinguishers",
-  },
-  {
-    src: "/assets/extinguisher-range.jpg",
-    alt: "Range of portable fire extinguishers",
-    caption: "Fire protection equipment supply",
-    place: "Equipment · specification & supply",
+    title: "Commercial & residential",
+    items: [
+      { src: "/assets/projects/mall-ghaziabad-up.jpg", label: "Mall", place: "Ghaziabad, UP" },
+      { src: "/assets/projects/residential-apartment-greater-noida-up.jpg", label: "Residential Apartment", place: "Greater Noida, UP" },
+    ],
   },
 ];
 
-const trustMarks = [
-  { src: "/assets/trust/msme.png", alt: "MSME registration mark", label: "MSME" },
-  { src: "/assets/trust/gem.png", alt: "Government e-Marketplace mark", label: "GeM" },
-  { src: "/assets/trust/iso.png", alt: "ISO 9001:2015 certification mark", label: "ISO 9001:2015" },
+/* Marquee clients & government tenders — named accounts from the profile. */
+const marqueeClients = [
+  "Goenka — Star Paper Mill, Saharanpur",
+  "Devbhoomi Group, Uttarakhand",
+  "ITC, Haridwar",
+  "Marriott, Haridwar",
+  "Mall of Dehradun, Uttarakhand",
+  "Haldiram's",
+  "BCL Ethanol, Punjab",
 ];
 
+/* Certification & registration marks. */
+const certMarks = [
+  { src: "/assets/certs/iso.png", alt: "ISO 9001:2015 certification mark", label: "ISO 9001:2015" },
+  { src: "/assets/certs/msme.png", alt: "MSME registration mark", label: "MSME" },
+  { src: "/assets/certs/gem-government-e-marketplace.png", alt: "Government e-Marketplace mark", label: "GeM" },
+  { src: "/assets/certs/isi-mark.png", alt: "ISI mark", label: "ISI" },
+  { src: "/assets/certs/ce-mark.png", alt: "CE mark", label: "CE" },
+];
+
+const channelPartners = [
+  { src: "/assets/certs/channel-partner-cease-fire.png", alt: "Ceasefire channel partner" },
+  { src: "/assets/certs/channel-partner-mitras.png", alt: "Mitras channel partner" },
+  { src: "/assets/certs/channel-partner-newtech.png", alt: "Newtech channel partner" },
+  { src: "/assets/certs/channel-partner-rapidex.png", alt: "Rapidex Worldwide Express channel partner" },
+];
+
+/* Full client roster (transparent logos shown on white tiles). */
 const clientLogos = [
-  { src: "/assets/trust/powergrid.png", alt: "POWERGRID" },
-  { src: "/assets/trust/indianoil.svg", alt: "IndianOil" },
-  { src: "/assets/trust/hindustan-petroleum.svg", alt: "Hindustan Petroleum" },
-  { src: "/assets/trust/haldirams.png", alt: "Haldiram's" },
-  { src: "/assets/trust/pvr.png", alt: "PVR Cinemas" },
-  { src: "/assets/trust/icici-bank.svg", alt: "ICICI Bank" },
-  { src: "/assets/trust/bhel.svg", alt: "BHEL" },
-  { src: "/assets/trust/iffco.png", alt: "IFFCO" },
-  { src: "/assets/trust/uttam-sugar.png", alt: "Uttam Sugar" },
-  { src: "/assets/trust/indian-navy.png", alt: "Indian Navy" },
+  { src: "/assets/clients/indian-oil.png", alt: "IndianOil" },
+  { src: "/assets/clients/bharat-petroleum.png", alt: "Bharat Petroleum" },
+  { src: "/assets/clients/hindustan-petroleum.png", alt: "Hindustan Petroleum" },
+  { src: "/assets/clients/bhel.png", alt: "BHEL" },
+  { src: "/assets/clients/powergrid.png", alt: "POWERGRID" },
+  { src: "/assets/clients/iffco.png", alt: "IFFCO" },
+  { src: "/assets/clients/indian-railway.png", alt: "Indian Railway" },
+  { src: "/assets/clients/upptcl.png", alt: "UP Power Transmission Corporation" },
+  { src: "/assets/clients/mhada.png", alt: "MHADA" },
+  { src: "/assets/clients/tata.png", alt: "TATA" },
+  { src: "/assets/clients/haldirams.png", alt: "Haldiram's" },
+  { src: "/assets/clients/star-paper.png", alt: "Star Paper" },
+  { src: "/assets/clients/bajaj-sugar.png", alt: "Bajaj Sugar" },
+  { src: "/assets/clients/uttam-sugar.png", alt: "Uttam Sugar" },
+  { src: "/assets/clients/uttam-energy.png", alt: "Uttam Energy" },
+  { src: "/assets/clients/snj-bio-products.png", alt: "SNJ Bio Products" },
+  { src: "/assets/clients/indian-herbs.png", alt: "Indian Herbs" },
+  { src: "/assets/clients/central-pulp-and-paper-research-institute.jpg", alt: "Central Pulp & Paper Research Institute" },
+  { src: "/assets/clients/vapco-engineers.png", alt: "Vapco Engineers" },
+  { src: "/assets/clients/icici-bank.png", alt: "ICICI Bank" },
+  { src: "/assets/clients/hdfc-bank.png", alt: "HDFC Bank" },
+  { src: "/assets/clients/sbi.png", alt: "State Bank of India" },
+  { src: "/assets/clients/axis-bank.png", alt: "Axis Bank" },
+  { src: "/assets/clients/pvr-cinemas.png", alt: "PVR Cinemas" },
+  { src: "/assets/clients/dominos-pizza.png", alt: "Domino's Pizza" },
+  { src: "/assets/clients/taco-bell.png", alt: "Taco Bell" },
+  { src: "/assets/clients/trends.png", alt: "Trends" },
+  { src: "/assets/clients/shipra-mall.jpg", alt: "Shipra Mall" },
+  { src: "/assets/clients/alm.png", alt: "ALM" },
+  { src: "/assets/clients/amity-university.png", alt: "Amity University" },
+  { src: "/assets/clients/iit-roorkee-emblem.png", alt: "IIT Roorkee" },
+  { src: "/assets/clients/dev-bhoomi-uttarakhand-university.jpg", alt: "Dev Bhoomi Uttarakhand University" },
+  { src: "/assets/clients/delhi-public-school.png", alt: "Delhi Public School" },
+  { src: "/assets/clients/mount-litera-zee-school.png", alt: "Mount Litera Zee School" },
+  { src: "/assets/clients/nalanda-world-school.png", alt: "Nalanda World School" },
 ];
+
+/* Curated subset for the top marquee strip (strongest, most recognisable). */
+const marqueeLogos = [
+  "indian-oil.png", "bharat-petroleum.png", "hindustan-petroleum.png", "bhel.png",
+  "powergrid.png", "iffco.png", "indian-railway.png", "tata.png", "haldirams.png",
+  "icici-bank.png", "hdfc-bank.png", "sbi.png", "pvr-cinemas.png", "amity-university.png",
+].map((f) => clientLogos.find((c) => c.src.endsWith(f))).filter(Boolean);
 
 /* ------------------------------------------------------------------ */
 /*  Icons                                                              */
@@ -244,28 +310,36 @@ function Hero() {
       <div className="hero-inner">
         <div className="hero-copy" data-reveal>
           <p className="eyebrow">
-            <span className="eyebrow-dot" /> Since 2001 · ISO 9001:2015 · Rahul Enterprises
+            <span className="eyebrow-dot" /> Since 2003 · ISO 9001:2015 · Save life, save property
           </p>
           <h1>
             Fire protection<br />
             <span className="text-flame">built to stand ready.</span>
           </h1>
-          <p className="hero-lead">
-            For 25 years, Rahul Fire Safety has designed, installed and maintained
-            the systems that protect people and property across North India — from
-            refineries and power utilities to hospitality and banking.
-          </p>
           <div className="hero-actions">
             <a className="button button--primary" href="#contact">Request a site survey</a>
             <a className="button button--ghost" href={`tel:${PHONE_PRIMARY}`}>
               <span aria-hidden="true">✆</span> Call an engineer
             </a>
           </div>
-          <ul className="hero-trust">
-            <li><strong>25+ yrs</strong> in the field</li>
-            <li><strong>NBC · NFPA</strong> engineered</li>
-            <li><strong>Design → AMC</strong> one partner</li>
-          </ul>
+          <dl className="hero-stats">
+            <div className="hero-stat">
+              <dt>23<span>+</span></dt>
+              <dd>Years of experience</dd>
+            </div>
+            <div className="hero-stat">
+              <dt>5000<span>+</span></dt>
+              <dd>Projects delivered</dd>
+            </div>
+            <div className="hero-stat">
+              <dt>19<span>+</span></dt>
+              <dd>Cities served</dd>
+            </div>
+            <div className="hero-stat hero-stat--code">
+              <dt>NBC · TAC · NFPA</dt>
+              <dd>Engineered to standard</dd>
+            </div>
+          </dl>
         </div>
       </div>
       <a className="hero-scroll" href="#clients" aria-label="Scroll to see our clients">
@@ -287,10 +361,10 @@ function ClientBar() {
         <p className="client-bar-label">Trusted to protect</p>
         <div className="client-bar-marquee">
           <div className="client-bar-track">
-            {clientLogos.map((c) => (
+            {marqueeLogos.map((c) => (
               <img key={c.alt} src={c.src} alt={c.alt} decoding="async" />
             ))}
-            {clientLogos.map((c) => (
+            {marqueeLogos.map((c) => (
               <img key={`${c.alt}-dup`} src={c.src} alt="" aria-hidden="true" decoding="async" />
             ))}
           </div>
@@ -322,27 +396,29 @@ function About() {
       <div className="about-grid">
         <div className="about-copy">
           <Kicker>Who we are</Kicker>
-          <h2 data-reveal>A quarter-century of fire engineering you can rely on.</h2>
+          <h2 data-reveal>Over two decades of fire engineering you can rely on.</h2>
           <p data-reveal>
-            Founded in the early 2000s by Mr. Neeraj Singh, Rahul Fire Safety (a unit of
-            Rahul Enterprises) executes practical fire engineering and mechanical projects
-            built to protect people and property from fire risk.
+            Founded in the early 2000s by Mr. Neeraj Singh and today led by its managing
+            partners, Rahul Fire Safety is one of the leading names in fire safety projects —
+            protecting people and property from fire risk with over two decades of major
+            project experience.
           </p>
           <p data-reveal>
-            A dedicated design and engineering capability — backed by quality control at
-            both site and workshop — lets us deliver accountable, audit-ready work for
-            industrial and commercial facilities across the NCR and beyond.
+            A dedicated design & engineering division of qualified engineers works to National
+            and International standards — NBC, TAC and NFPA — using AutoCAD, Hydraulic Cal and
+            Sprinkcad. A standing quality-control team assures standards at both site and
+            workshop, for a one-stop, accountable fire-protection solution.
           </p>
           <div className="standard-strip" data-reveal>
             <span className="standard-strip-label">Engineered to</span>
-            <span>NBC</span><span>TAC</span><span>NFPA</span><span>FM Global</span>
+            <span>NBC</span><span>TAC</span><span>NFPA</span>
           </div>
           <a className="button button--primary" href="#contact" data-reveal>Start your safety plan</a>
         </div>
         <div className="about-media" data-reveal>
           <img src="/assets/about-team.jpg" alt="Rahul Fire Safety engineers inspecting a fire control panel" loading="lazy" decoding="async" />
           <div className="about-media-badge">
-            <strong>Est. 2001</strong>
+            <strong>Est. 2003</strong>
             <span>Neeraj Singh, Founder</span>
           </div>
         </div>
@@ -362,7 +438,7 @@ function Stats() {
       <div className="stats-inner">
         <div className="stats-head" data-reveal>
           <Kicker>The record</Kicker>
-          <h2>Numbers that carry weight.</h2>
+          <h2>Serving 19+ cities with 5000+ projects.</h2>
         </div>
         <div className="stats-grid">
           {stats.map(([value, label, note]) => (
@@ -387,7 +463,7 @@ function Services() {
     <section className="section services" id="services">
       <div className="section-head">
         <div>
-          <Kicker>What we do</Kicker>
+          <Kicker>Areas we deal in</Kicker>
           <h2 data-reveal>One team from fire risk to readiness.</h2>
         </div>
         <p className="section-head-note" data-reveal>
@@ -422,7 +498,7 @@ function Systems() {
       <div className="systems-scrim" />
       <div className="systems-inner">
         <div className="systems-copy">
-          <Kicker>Engineered solutions</Kicker>
+          <Kicker>Systems we provide</Kicker>
           <h2 data-reveal>Systems selected for the hazard — not the checklist.</h2>
           <p data-reveal>
             The right suppression system depends on what you're protecting. We design,
@@ -441,6 +517,30 @@ function Systems() {
 }
 
 /* ------------------------------------------------------------------ */
+/*  Products                                                          */
+/* ------------------------------------------------------------------ */
+
+function Products() {
+  return (
+    <section className="section products">
+      <div className="section-head">
+        <div>
+          <Kicker>Our products</Kicker>
+          <h2 data-reveal>The fire protection equipment we supply.</h2>
+        </div>
+        <p className="section-head-note" data-reveal>
+          Correctly specified extinguishers, hydrant and suppression hardware — sourced and
+          supplied alongside every installation and AMC.
+        </p>
+      </div>
+      <figure className="products-banner" data-reveal>
+        <img src="/assets/products/fire-protection-equipments-range.png" alt="Range of fire protection equipment supplied by Rahul Fire Safety" loading="lazy" decoding="async" />
+      </figure>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
 /*  Why us                                                            */
 /* ------------------------------------------------------------------ */
 
@@ -453,7 +553,7 @@ function WhyUs() {
           <h2 data-reveal>The edge is accountability.</h2>
         </div>
         <p className="section-head-note" data-reveal>
-          Fire safety is bought on trust. Here's what 25 years of it looks like in practice.
+          Fire safety is bought on trust. Here's what two decades of it looks like in practice.
         </p>
       </div>
       <div className="why-grid">
@@ -470,8 +570,44 @@ function WhyUs() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Work (real photos)                                                */
+/*  Work — auto-scrolling rows, one per project type                  */
 /* ------------------------------------------------------------------ */
+
+// Repeat a short list until it comfortably fills a marquee row.
+function fill(items, min) {
+  if (items.length === 0) return items;
+  const out = [];
+  while (out.length < min) out.push(...items);
+  return out;
+}
+
+function WorkRow({ group, reverse }) {
+  const base = fill(group.items, 6);
+  const loop = [...base, ...base]; // second copy makes the -50% translate seamless
+  return (
+    <div className="work-row" data-reveal>
+      <p className="work-row-title"><span className="kicker-bar" /> {group.title}</p>
+      <div className="work-marquee">
+        <div className={`work-track ${reverse ? "work-track--rev" : ""}`}>
+          {loop.map((p, i) => {
+            const dup = i >= base.length;
+            return (
+              <figure className="work-card" key={i} aria-hidden={dup}>
+                <div className="work-card-image">
+                  <img src={p.src} alt={dup ? "" : `${p.label} — ${p.place}`} loading="lazy" decoding="async" />
+                </div>
+                <figcaption>
+                  <strong>{p.label}</strong>
+                  <span>{p.place}</span>
+                </figcaption>
+              </figure>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function Work() {
   return (
@@ -482,20 +618,12 @@ function Work() {
           <h2 data-reveal>Installed where performance matters.</h2>
         </div>
         <p className="section-head-note" data-reveal>
-          Real installations delivered by our teams — a sample of the sites we protect.
+          Real installations delivered by our teams — grouped by the kind of site we protect.
         </p>
       </div>
-      <div className="work-grid">
-        {projects.map((p) => (
-          <figure className="work-item" key={p.caption} data-reveal>
-            <div className="work-image">
-              <img src={p.src} alt={p.alt} loading="lazy" decoding="async" />
-            </div>
-            <figcaption>
-              <strong>{p.caption}</strong>
-              <span>{p.place}</span>
-            </figcaption>
-          </figure>
+      <div className="work-rows">
+        {projectGroups.map((group, i) => (
+          <WorkRow key={group.title} group={group} reverse={i % 2 === 1} />
         ))}
       </div>
     </section>
@@ -503,26 +631,54 @@ function Work() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Credentials                                                       */
+/*  Clients & credentials                                             */
 /* ------------------------------------------------------------------ */
 
 function Credentials() {
   return (
-    <section className="section credentials">
+    <section className="section credentials" id="credentials">
       <div className="section-head">
         <div>
-          <Kicker>Credentials & clients</Kicker>
+          <Kicker>Clients & credentials</Kicker>
           <h2 data-reveal>Certified, registered, and chosen by the best.</h2>
         </div>
+        <p className="section-head-note" data-reveal>
+          Serving 19+ cities with 5000+ projects across two decades — for public-sector
+          undertakings, industry leaders and government tenders alike.
+        </p>
       </div>
-      <div className="credential-marks" data-reveal>
-        {trustMarks.map((m) => (
-          <figure key={m.label}>
-            <img src={m.src} alt={m.alt} loading="lazy" decoding="async" />
-            <figcaption>{m.label}</figcaption>
-          </figure>
-        ))}
+
+      <div className="cred-marks-row">
+        <div className="cred-block" data-reveal>
+          <p className="cred-block-title">Certifications & registrations</p>
+          <div className="credential-marks">
+            {certMarks.map((m) => (
+              <figure key={m.label}>
+                <img src={m.src} alt={m.alt} loading="lazy" decoding="async" />
+                <figcaption>{m.label}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+        <div className="cred-block" data-reveal>
+          <p className="cred-block-title">Channel partners</p>
+          <div className="credential-partners">
+            {channelPartners.map((m) => (
+              <figure key={m.alt}><img src={m.src} alt={m.alt} loading="lazy" decoding="async" /></figure>
+            ))}
+          </div>
+        </div>
       </div>
+
+      <div className="marquee-clients" data-reveal>
+        <p className="cred-block-title">MEP clients & government tenders</p>
+        <ul className="marquee-clients-list">
+          {marqueeClients.map((name) => (
+            <li key={name}><span className="marquee-client-dot" aria-hidden="true" />{name}</li>
+          ))}
+        </ul>
+      </div>
+
       <p className="credential-clients-title" data-reveal>Organisations that trust us</p>
       <div className="credential-clients" data-reveal>
         {clientLogos.map((c) => (
@@ -532,8 +688,8 @@ function Credentials() {
         ))}
       </div>
       <p className="credential-note" data-reveal>
-        Marks reproduced from the Rahul Fire Safety company profile. Supporting credentials
-        and customer references can be shared during project evaluation.
+        Client and certification marks are reproduced from the Rahul Fire Safety company profile.
+        Supporting credentials and customer references can be shared during project evaluation.
       </p>
     </section>
   );
@@ -551,14 +707,14 @@ function SurveyForm() {
     requirement: "",
     message: "",
   });
+  const [status, setStatus] = useState("idle"); // idle | sending | ok | error
 
   const update = (e) => {
     const { name, value } = e.target;
     setDetails((d) => ({ ...d, [name]: value }));
   };
 
-  const submit = (e) => {
-    e.preventDefault();
+  const mailtoFallback = () => {
     const subject = `Website enquiry: ${details.requirement} - ${details.name}`;
     const body = [
       "Hello Rahul Fire Safety,",
@@ -577,6 +733,45 @@ function SurveyForm() {
     window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
+  const submit = async (e) => {
+    e.preventDefault();
+
+    // Until a Web3Forms key is set, keep the reliable mailto behaviour.
+    if (!WEB3FORMS_KEY || WEB3FORMS_KEY === "YOUR_WEB3FORMS_ACCESS_KEY") {
+      mailtoFallback();
+      return;
+    }
+
+    setStatus("sending");
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `Website enquiry: ${details.requirement || "General"} — ${details.name}`,
+          from_name: "Rahul Fire Safety website",
+          name: details.name,
+          phone: details.phone,
+          facility_type: details.facility,
+          requirement: details.requirement,
+          message: details.message || "(no additional details)",
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setStatus("ok");
+        setDetails({ name: "", phone: "", facility: "", requirement: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  };
+
+  const sending = status === "sending";
+
   return (
     <form className="survey-form" onSubmit={submit} id="enquiry">
       <p className="survey-form-title">Lodge an enquiry</p>
@@ -594,8 +789,9 @@ function SurveyForm() {
           <span>Facility</span>
           <select required name="facility" value={details.facility} onChange={update}>
             <option value="" disabled>Select type</option>
-            <option>Industrial facility</option>
-            <option>Commercial building</option>
+            <option>Distillery or ethanol plant</option>
+            <option>Industrial or process facility</option>
+            <option>Commercial building or mall</option>
             <option>Hospitality or retail</option>
             <option>Institutional premises</option>
             <option>Residential project</option>
@@ -618,8 +814,20 @@ function SurveyForm() {
           <textarea name="message" value={details.message} onChange={update} rows="3" placeholder="Location, facility size or required timeline" />
         </label>
       </div>
-      <button className="button button--primary survey-submit" type="submit">Prepare enquiry email</button>
-      <p className="form-note">Opens in your email app for a final review before sending.</p>
+      <button className="button button--primary survey-submit" type="submit" disabled={sending}>
+        {sending ? "Sending…" : "Send enquiry"}
+      </button>
+      {status === "ok" && (
+        <p className="form-note form-note--ok" role="status">Thank you — your enquiry has been sent. We'll be in touch shortly.</p>
+      )}
+      {status === "error" && (
+        <p className="form-note form-note--error" role="alert">
+          Something went wrong. Please call {PHONE_PRIMARY_DISPLAY} or email {EMAIL}.
+        </p>
+      )}
+      {status === "idle" && (
+        <p className="form-note">Your details go straight to our team at {EMAIL}.</p>
+      )}
     </form>
   );
 }
@@ -649,11 +857,21 @@ function Contact() {
             </div>
             <div className="contact-row">
               <span className="contact-row-label">Email</span>
-              <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+              <div>
+                <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+                <a href={`mailto:${EMAIL_SECONDARY}`}>{EMAIL_SECONDARY}</a>
+              </div>
+            </div>
+            <div className="contact-row">
+              <span className="contact-row-label">Online</span>
+              <div>
+                <a href={`https://${WEBSITE_DISPLAY}`} target="_blank" rel="noopener noreferrer">{WEBSITE_DISPLAY}</a>
+                <a href={`https://instagram.com/${INSTAGRAM}`} target="_blank" rel="noopener noreferrer">@{INSTAGRAM}</a>
+              </div>
             </div>
             <div className="contact-row">
               <span className="contact-row-label">Visit</span>
-              <p>20, New Vaishali Vihar, Delhi Road,<br />Saharanpur, UP 247001</p>
+              <p>Delhi Road, Saharanpur,<br />Uttar Pradesh 247001, India</p>
             </div>
           </div>
           <div className="contact-cta-row" data-reveal>
@@ -678,8 +896,8 @@ function Finale() {
     <section className="finale" style={{ backgroundImage: "url(/assets/equipment.jpg)" }}>
       <div className="finale-scrim" />
       <div className="finale-inner" data-reveal>
-        <p className="finale-kicker">Rahul Fire Safety · Since 2001</p>
-        <h2>Protecting life<br /><span className="text-flame">&amp; property.</span></h2>
+        <p className="finale-kicker">Rahul Fire Safety · Since 2003</p>
+        <h2>Save life<br /><span className="text-flame">&amp; property.</span></h2>
         <a className="button button--primary button--lg" href="#contact">Request a site survey</a>
       </div>
     </section>
@@ -708,7 +926,7 @@ function Footer() {
           <a href={`tel:${PHONE_PRIMARY}`}>{PHONE_PRIMARY_DISPLAY}</a>
           <a href={`tel:${PHONE_SECONDARY}`}>{PHONE_SECONDARY_DISPLAY}</a>
           <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
-          <p className="footer-address">Saharanpur, Uttar Pradesh 247001</p>
+          <p className="footer-address">Delhi Road, Saharanpur, Uttar Pradesh 247001</p>
         </div>
       </div>
       <div className="footer-base">
@@ -785,6 +1003,7 @@ export default function App() {
         <Stats />
         <Services />
         <Systems />
+        <Products />
         <WhyUs />
         <Work />
         <Credentials />
